@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Menu</title>
+</head>
+<body>
+<p>Menu</p> <br>
+<p>Here is the list</p>
+
+<!--{% for menu in menus %}-->
+
+<!--    <p>{{ menu.MID }}</p>-->
+
+<!--{% endfor %}-->
+
+<!--{% for food in foods %}-->
+
+<!--    <p>{{ food.MID }}</p>-->
+
+<!--{% endfor %}-->
+
+<!--{% for drink in drinks %}-->
+
+<!--    <p>{{ drink.MID }}</p>-->
+
+<!--{% endfor %}-->
+
+
+<div>
+    <h1>Burgers</h1>
+    {% for food in foods %}
+        {% if food.Food_Type == "Burgers" %}
+        <p>{{ food.Name }}</p>
+        {% endif %}
+    {% endfor %}
+
+</div>
+
+<div>
+    <h1>Wraps</h1>
+    {% for food in foods %}
+        {% if food.Food_Type == "Wraps" %}
+        <p>{{ food.Name }}</p>
+        {% endif %}
+    {% endfor %}
+</div>
+
+<div>
+    <h1>Meal Options</h1>
+    {% for food in foods %}
+        {% if food.Food_Type == "Meal Options" %}
+        <p>{{ food.Name }}</p>
+        {% endif %}
+    {% endfor %}
+</div>
+
+<div>
+    <h1>Snacks</h1>
+    {% for food in foods %}
+        {% if food.Food_Type == "Snacks" %}
+        <p>{{ food.Name }}</p>
+        {% endif %}
+    {% endfor %}
+</div>
+
+<div>
+    <h1>Drinks</h1>
+    {% for drink in drinks %}
+        <p>{{ Drink.Name }}</p>
+    {% endfor %}
+</div>
+
+</body>
+</html>
