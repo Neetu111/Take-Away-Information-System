@@ -36,57 +36,60 @@ class Person(models.Model):
     Contact_Number = models.CharField(max_length=400)
 
     def __str__(self):
-        return self.PID + ' ' + self.First_Name
+        return str(self.PID) + ' ' + str(self.First_Name)
 
 class Customer(models.Model):
-    PID = models.CharField(max_length=6, primary_key=True)
+    PID = models.ForeignKey(Person, on_delete=models.CASCADE)
     Join_Date = models.DateField(("Date"), default=date.today)
-    Feedback = models.CharField(max_length=400)
-    Preferred_Food_Type = models.TextField(choices = Preferred_Food_Choice)
-    Card_Number = models.CharField(max_length=400)
+    Feedback = models.CharField(max_length=400, null=True)
+    Preferred_Food_Taste = models.TextField(choices = Preferred_Food_Choice, default="Indian")
+    Card_Number = models.CharField(max_length=400, null=True)
     Card_Exp_Date = models.DateField(("Date"), default=date.today)
-    Card_CVV = models.DecimalField(max_digits=3, decimal_places=0, null=False)
+    Card_CVV = models.DecimalField(max_digits=3, decimal_places=0, null=True)
     Card_Valid = models.BooleanField()
 
     def __str__(self):
-        return self.PID + ' ' + self.Join_Date
+        return str(self.PID) + ' ' + str(self.Join_Date)
 
 class Business_Owner(models.Model):
-    PID = models.CharField(max_length=6, primary_key=True)
+    PID = models.ForeignKey(Person, on_delete=models.CASCADE)
     ABN = models.DecimalField(max_digits=11, decimal_places=0, null=False)
 
     def __str__(self):
-        return self.PID + ' ' + self.ABN
+        return str(self.PID) + ' ' + str(self.ABN)
 
 class Menu(models.Model):
     MID = models.CharField(max_length=6, primary_key=True)
     Price = models.DecimalField(max_digits=4, decimal_places=2, null=False)
 
     def __str__(self):
-        return self.MID + ' ' + str(self.Price)
+        return str(self.MID) + ' ' + str(self.Price)
 
 class Menu_Prepare(models.Model):
-    MID = models.CharField(max_length=6)
-    PID = models.CharField(max_length=6)
+    MID = models.ForeignKey(Menu, on_delete=models.CASCADE)
+    PID = models.ForeignKey(Person, on_delete=models.CASCADE)
 
     class Meta:
         unique_together = (('MID','PID'),)
 
     def __str__(self):
-        return self.MID + ' ' + self.PID
+        return str(self.MID) + ' ' + str(self.PID)
 
 class Food(models.Model):
-    MID = models.CharField(max_length=6, primary_key=True)
+    MID = models.ForeignKey(Menu, on_delete=models.CASCADE)
     Name = models.CharField(max_length=60)
     Ingredient = models.CharField(max_length=1000)
     Food_Type = models.TextField(choices = Food_Types, default= 'Burgers', null=False)
 
     def __str__(self):
-        return self.MID + ' ' + self.Name + '' + self.Ingredient + '' + str(self.Food_Type )
+        return str(self.MID) + ' ' + str(self.Name) + '' + str(self.Ingredient) + '' + str(self.Food_Type )
 
 class Drink(models.Model):
-    MID = models.CharField(max_length=6, primary_key=True)
+    MID = models.ForeignKey(Menu, on_delete=models.CASCADE)
     Name = models.CharField(max_length=30)
+
+    def __str__(self):
+        return str(self.MID) + ' ' + str(self.Name)
 
 class Order(models.Model):
     OID = models.CharField(max_length=6, primary_key=True)
@@ -95,45 +98,45 @@ class Order(models.Model):
     Waiting_Time = models.TimeField()
 
     def __str__(self):
-        return self.OID + ' ' + self.Status
+        return str(self.OID) + ' ' + str(self.Status)
 
 class Order_Feedback(models.Model):
-    OID = models.CharField(max_length=6)
-    PID = models.CharField(max_length=6)
+    OID = models.ForeignKey(Order, on_delete=models.CASCADE)
+    PID = models.ForeignKey(Person, on_delete=models.CASCADE)
     Feedback = models.CharField(max_length=1000)
 
     class Meta:
         unique_together = (('OID','PID'),)
 
     def __str__(self):
-        return self.OID + ' ' + self.PID
+        return str(self.OID) + ' ' + str(self.PID)
 
 class Create_Your_Own_Food(models.Model):
-    OID = models.CharField(max_length=6, primary_key=True)
-    Food_Origin = models.CharField(max_length=1000)
+    OID = models.ForeignKey(Order, on_delete=models.CASCADE)
+    Preferred_Food_Taste = models.TextField(choices = Preferred_Food_Choice)
 
     def __str__(self):
-        return self.OID + ' ' + self.Food_Origin
+        return str(self.OID) + ' ' + str(self.Preferred_Food_Taste)
 
 class Customize(models.Model):
-    OID = models.CharField(max_length=6)
-    MID = models.CharField(max_length=6)
+    OID = models.ForeignKey(Order, on_delete=models.CASCADE)
+    MID = models.ForeignKey(Menu, on_delete=models.CASCADE)
     Changes = models.CharField(max_length=1000)
 
     class Meta:
         unique_together = (('MID','OID'),)
 
     def __str__(self):
-        return self.OID + ' ' + self.MID
+        return str(self.OID) + ' ' + str(self.MID)
 
 class Pick(models.Model):
-    OID = models.CharField(max_length=6)
-    MID = models.CharField(max_length=6)
+    OID = models.ForeignKey(Order, on_delete=models.CASCADE)
+    MID = models.ForeignKey(Menu, on_delete=models.CASCADE)
 
     class Meta:
         unique_together = (('MID','OID'),)
 
     def __str__(self):
-        return self.MID + ' ' + self.OID
+        return str(self.MID) + ' ' + str(self.OID)
 
 

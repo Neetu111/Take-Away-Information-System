@@ -3,72 +3,163 @@
 <head>
     <meta charset="UTF-8">
     <title>Menu</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-<p>Menu</p> <br>
-<p>Here is the list</p>
 
-<!--{% for menu in menus %}-->
+<!-- Navbar to show different pages, signup, signin and order menu -->
+<nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+    <ul class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">Boomrange Cafe</a>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+            <li class="nav-item dropdown active">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Menu<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#Burgers">Burgers</a></li>
+                    <li><a class="dropdown-item" href="#Wraps">Wraps</a></li>
+                    <li><a class="dropdown-item" href="#Meal Options">Meal Options</a></li>
+                    <li><a class="dropdown-item" href="#Snacks">Snacks</a></li>
+                    <li><a class="dropdown-item" href="#Beverages">Beverages</a></li>
+                </ul>
+            </li>
+            <li class="nav-item"><a href="#">About Us</a></li>
+            <li class="nav-item"><a href="#">Location</a></li>
+            <li class="nav-item"><a href="#">Contact Us</a></li>
+            <li class="nav-item"><a href="#">Login</a></li>
+            <li class="nav-item"><a href="#">Order</a></li>
+        </ul>
+    </ul>
+</nav>
 
-<!--    <p>{{ menu.MID }}</p>-->
-
-<!--{% endfor %}-->
-
-<!--{% for food in foods %}-->
-
-<!--    <p>{{ food.MID }}</p>-->
-
-<!--{% endfor %}-->
-
-<!--{% for drink in drinks %}-->
-
-<!--    <p>{{ drink.MID }}</p>-->
-
-<!--{% endfor %}-->
-
-
-<div>
-    <h1>Burgers</h1>
-    {% for food in foods %}
-        {% if food.Food_Type == "Burgers" %}
-        <p>{{ food.Name }}</p>
-        {% endif %}
-    {% endfor %}
+<!-- Burgers List -->
+<div class="Burgers">
+    <a name="Burgers"><h3>Burgers</h3></a>
+    <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Food</th>
+            <th>Ingredient</th>
+            <th>Price</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for food in foods %}
+            <tr>
+                {% if food.Food_Type == "Burgers" %}
+                <td>{{ food.Name }}</td>
+                <td>{{ food.Ingredient }}</td>
+                <td>{{ food.MID.Price }}</td>
+                {% endif %}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 
 </div>
 
-<div>
-    <h1>Wraps</h1>
-    {% for food in foods %}
-        {% if food.Food_Type == "Wraps" %}
-        <p>{{ food.Name }}</p>
-        {% endif %}
-    {% endfor %}
+<!-- Wraps List -->
+<div class="Wraps">
+    <a name="Wraps"><h3>Wraps</h3></a>
+    <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Food</th>
+            <th>Ingredient</th>
+            <th>Price</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for food in foods %}
+            <tr>
+                {% if food.Food_Type == "Wraps" %}
+                <td>{{ food.Name }}</td>
+                <td>{{ food.Ingredient }}</td>
+                <td>{{ food.MID.Price }}</td>
+                {% endif %}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 </div>
 
-<div>
-    <h1>Meal Options</h1>
-    {% for food in foods %}
-        {% if food.Food_Type == "Meal Options" %}
-        <p>{{ food.Name }}</p>
-        {% endif %}
-    {% endfor %}
+<!-- Meal Options List -->
+<div class="Meal Options">
+    <a name="Meal Options"><h3>Meal Options</h3></a>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Food</th>
+                <th>Ingredient</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for food in foods %}
+                <tr>
+                    {% if food.Food_Type == "Meal Options" %}
+                    <td>{{ food.Name }}</td>
+                    <td>{{ food.Ingredient }}</td>
+                    <td>{{ food.MID.Price }}</td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 </div>
 
-<div>
-    <h1>Snacks</h1>
-    {% for food in foods %}
-        {% if food.Food_Type == "Snacks" %}
-        <p>{{ food.Name }}</p>
-        {% endif %}
-    {% endfor %}
+<!-- Snacks List -->
+<div class="Snacks">
+    <a name="Snacks"><h3>Snacks</h3></a>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Food</th>
+                <th>Ingredient</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for food in foods %}
+                <tr>
+                    {% if food.Food_Type == "Snacks" %}
+                    <td>{{ food.Name }}</td>
+                    <td>{{ food.Ingredient }}</td>
+                    <td>{{ food.MID.Price }}</td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 </div>
 
-<div>
-    <h1>Drinks</h1>
-    {% for drink in drinks %}
-        <p>{{ Drink.Name }}</p>
-    {% endfor %}
+<!-- Beverages List -->
+<div class="Beverages">
+    <a name="Beverages"><h3>Beverages List</h3></a>
+    <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Beverage</th>
+            <th>Price</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for drink in drinks %}
+            <tr>
+                <td>{{ drink.Name }}</td>
+                <td>{{ drink.MID.Price }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 </div>
 
 </body>

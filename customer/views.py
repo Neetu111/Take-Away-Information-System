@@ -9,10 +9,11 @@ def customer_list(request):
 
 
 def menu_list(request):
-    menus = Menu.objects.all()
+    menus = Menu.objects.values()
     foods = Food.objects.all()
     drinks = Drink.objects.all()
     return render(request, 'customer/menu_list.html', {'menus' : menus, 'foods' : foods, 'drinks' : drinks })
+
 
 
 # Useful for adding order option
