@@ -1,0 +1,39 @@
+{% extends 'customer/base.html' %}
+
+{% block body %}
+
+Gather some food
+
+<form class="Pick_Food" action="{% url 'customer:place_order' %}" method = "post">
+    {% csrf_token %}
+    <div class="Burgers">
+        <a name="Burgers"><h3>Burgers</h3></a>
+        <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>Food</th>
+                <th>Ingredient</th>
+                <th>Price</th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for food in foods %}
+                <tr>
+                    {% if food.Food_Type == "Burgers" %}
+                    <td><input type="checkbox" id="food{{ forloop.counter }}" name="food_ID" value="{{ food.MID }}"/>
+                    <label for="food{{ forloop.counter }}"> {{ food.Name }} </label> </td>
+                    <td>{{ food.Ingredient }}</td>
+                    <td>{{ food.MID.Price }}</td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div> <!-- end Burger List-->
+
+    <button class="button" type="submit" style="vertical-align:middle" ><span>Select</span></button>
+
+</form> <!-- end Pick Food-->
+
+
+{% endblock %}

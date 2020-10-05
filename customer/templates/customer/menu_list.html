@@ -1,43 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Menu</title>
+{% extends 'customer/base.html' %}
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-</head>
-<body>
-
-<!-- Navbar to show different pages, signup, signin and order menu -->
-<nav class="navbar navbar-light" style="background-color: #e3f2fd;">
-    <ul class="container-fluid">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="#">Boomrange Cafe</a>
-        </div>
-        <ul class="nav navbar-nav navbar-right">
-            <li class="nav-item dropdown active">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Menu<span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#Burgers">Burgers</a></li>
-                    <li><a class="dropdown-item" href="#Wraps">Wraps</a></li>
-                    <li><a class="dropdown-item" href="#Meal Options">Meal Options</a></li>
-                    <li><a class="dropdown-item" href="#Snacks">Snacks</a></li>
-                    <li><a class="dropdown-item" href="#Beverages">Beverages</a></li>
-                </ul>
-            </li>
-            <li class="nav-item"><a href="#">About Us</a></li>
-            <li class="nav-item"><a href="#">Location</a></li>
-            <li class="nav-item"><a href="#">Contact Us</a></li>
-            <li class="nav-item"><a href="#">Login</a></li>
-            <li class="nav-item"><a href="#">Order</a></li>
-        </ul>
-    </ul>
-</nav>
-
+{% block body %}
 <!-- Burgers List -->
 <div class="Burgers">
     <a name="Burgers"><h3>Burgers</h3></a>
@@ -62,7 +25,7 @@
         </tbody>
     </table>
 
-</div>
+</div> <!-- end Burger List-->
 
 <!-- Wraps List -->
 <div class="Wraps">
@@ -87,7 +50,7 @@
         {% endfor %}
         </tbody>
     </table>
-</div>
+</div>  <!-- end Wrap List-->
 
 <!-- Meal Options List -->
 <div class="Meal Options">
@@ -113,7 +76,7 @@
             {% endfor %}
         </tbody>
     </table>
-</div>
+</div>  <!-- end Meal Option List-->
 
 <!-- Snacks List -->
 <div class="Snacks">
@@ -139,7 +102,7 @@
             {% endfor %}
         </tbody>
     </table>
-</div>
+</div>  <!-- end Snacks List-->
 
 <!-- Beverages List -->
 <div class="Beverages">
@@ -160,7 +123,5 @@
         {% endfor %}
         </tbody>
     </table>
-</div>
-
-</body>
-</html>
+</div>  <!-- end Beverages List-->
+{% endblock %}

@@ -1,0 +1,47 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Menu</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<!-- Navbar to show different pages, signup, signin and order menu -->
+<nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+    <ul class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">Boomrange Cafe</a>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+            <li class="nav-item dropdown active">
+                <a href="{% url 'customer:menu_list' %}" class="nav-link dropdown-toggle" id="navbarDropdown" role="button"
+                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Menu<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#Burgers">Burgers</a></li>
+                    <li><a class="dropdown-item" href="#Wraps">Wraps</a></li>
+                    <li><a class="dropdown-item" href="#Meal Options">Meal Options</a></li>
+                    <li><a class="dropdown-item" href="#Snacks">Snacks</a></li>
+                    <li><a class="dropdown-item" href="#Beverages">Beverages</a></li>
+                </ul>
+            </li>
+            <li class="nav-item"><a href="#">About Us</a></li>
+            <li class="nav-item"><a href="#">Location</a></li>
+            <li class="nav-item"><a href="#">Contact Us</a></li>
+            <li class="nav-item"><a href="{% url 'customer:customer_login' %}">Login</a></li>
+            <li class="nav-item"><a href="{% url 'customer:order' %}">Order</a></li>
+        </ul>
+    </ul>
+</nav>
+
+{% block body %}
+{% endblock %}
+
+</body>
+</html>

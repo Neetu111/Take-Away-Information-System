@@ -1,0 +1,20 @@
+{% extends 'customer/base.html' %}
+
+{% block body %}
+
+    <div class="customer_log_in_page">
+        <form action="" method="POST" class="form-signin">
+            {% csrf_token %}
+            <label for="Name">Name:</label>
+            <input type="text" name="Name" placeholder="Username">
+            <br>
+
+            <label for="password">Password:</label>
+            <input type="password" name="password" placeholder="Password">
+
+            <br><br>
+            <button class="button" type="submit" style="vertical-align:middle" ><span>Login</span></button>
+        </form>
+    </div><!--- end customer_log_in_page --->
+
+{% endblock %}
