@@ -1,5 +1,19 @@
 {% extends 'customer/base.html' %}
 
+{% block data-toggle %} data-toggle="dropdown" {% endblock %}
+
+{% block menu %} <span class="caret"></span> {% endblock %}
+
+{% block dropdown %}
+    <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="#Burgers">Burgers</a></li>
+        <li><a class="dropdown-item" href="#Wraps">Wraps</a></li>
+        <li><a class="dropdown-item" href="#Meal Options">Meal Options</a></li>
+        <li><a class="dropdown-item" href="#Snacks">Snacks</a></li>
+        <li><a class="dropdown-item" href="#Beverages">Beverages</a></li>
+    </ul>
+{% endblock %}
+
 {% block body %}
 <!-- Burgers List -->
 <div class="Burgers">

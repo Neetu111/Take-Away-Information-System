@@ -21,15 +21,9 @@
         </div>
         <ul class="nav navbar-nav navbar-right">
             <li class="nav-item dropdown active">
-                <a href="{% url 'customer:menu_list' %}" class="nav-link dropdown-toggle" id="navbarDropdown" role="button"
-                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Menu<span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#Burgers">Burgers</a></li>
-                    <li><a class="dropdown-item" href="#Wraps">Wraps</a></li>
-                    <li><a class="dropdown-item" href="#Meal Options">Meal Options</a></li>
-                    <li><a class="dropdown-item" href="#Snacks">Snacks</a></li>
-                    <li><a class="dropdown-item" href="#Beverages">Beverages</a></li>
-                </ul>
+                <a href="{% url 'customer:menu_list' %}" class="nav-link dropdown-toggle" id="navbarDropdown"
+                   {% block data-toggle %} {% endblock %} aria-haspopup="true">Menu {% block menu %} {% endblock %} </a>
+                {% block dropdown %} {% endblock %}
             </li>
             <li class="nav-item"><a href="#">About Us</a></li>
             <li class="nav-item"><a href="#">Location</a></li>
